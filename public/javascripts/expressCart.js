@@ -202,7 +202,7 @@ $(document).ready(function (){
 
     $(document).on('click', '.product_opt_remove', function(e){
         e.preventDefault();
-        var name = $(this).closest('li').find('.opt-name').html();
+        var name = $(this).closest('li').find('.opt-name').val();
 
         $.ajax({
             method: 'POST',
@@ -220,9 +220,9 @@ $(document).ready(function (){
     $(document).on('click', '#product_opt_add', function(e){
         e.preventDefault();
 
-        var optName = $('#product_optName').val();
-        var optLabel = $('#product_optLabel').val();
-        var optType = $('#product_optType').val();
+        var optName = Math.random().toString(36).substring(7);
+        var qty = $('#product_qty').val();
+        var price = $('#product_price').val();
         var optOptions = $('#product_optOptions').val();
 
         var optJson = {};
@@ -232,9 +232,9 @@ $(document).ready(function (){
 
         var html = '<li class="list-group-item">';
         html += '<div class="row">';
-        html += '<div class="col-lg-2 opt-name">' + optName + '</div>';
-        html += '<div class="col-lg-2">' + optLabel + '</div>';
-        html += '<div class="col-lg-2">' + optType + '</div>';
+        html += '<input type="hidden" class="opt-name" value="' + optName+ '">';
+        html += '<div class="col-lg-3">' + qty + '</div>';
+        html += '<div class="col-lg-3">' + price + '</div>';
         html += '<div class="col-lg-4">' + optOptions + '</div>';
         html += '<div class="col-lg-2 text-right">';
         html += '<button class="product_opt_remove btn btn-danger btn-sm">Remove</button>';
@@ -246,8 +246,8 @@ $(document).ready(function (){
         // add to the stored json string
         optJson[optName] = {
             optName: optName,
-            optLabel: optLabel,
-            optType: optType,
+            qty: qty,
+            price: price,
             optOptions: $.grep(optOptions.split(','), function(n){ return n === 0 || n; })
         };
 

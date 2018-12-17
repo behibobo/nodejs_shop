@@ -58,21 +58,14 @@
                         <li class="list-group-item">
                             <div class="row">
                             <div class="col-lg-2">
-                                <strong>Name:</strong>
-                                <input type="text" id="product_optName" class="form-control" placeholder="Size" />
+                                <strong>Quantity:</strong>
+                                <input type="text" id="product_qty" class="form-control" placeholder="Quantity" />
                             </div>
                             <div class="col-lg-2">
-                                <strong>Label:</strong>
-                                <input type="text" id="product_optLabel" class="form-control" placeholder="Select size"/>
+                                <strong>Price:</strong>
+                                <input type="text" id="product_price" class="form-control" placeholder="Price"/>
                             </div>
-                            <div class="col-lg-2">
-                                <strong>Type:</strong>
-                                <select id="product_optType" class="form-control">
-                                    <option value="select">Select</option>
-                                    <option value="radio">Radio</option>
-                                    <option value="checkbox">Checkbox</option>
-                                </select>
-                            </div>
+
                             <div class="col-lg-4">
                                 <strong>Options:</strong>
                                 <input type="text" id="product_optOptions" class="form-control" placeholder="comma, seporated, list"/>
@@ -84,9 +77,9 @@
                         {{#each options}}
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class='col-lg-2 opt-name'>{{this.optName}}</div>
-                                    <div class='col-lg-2'>{{this.optLabel}}</div>
-                                    <div class='col-lg-2'>{{this.optType}}</div>
+                                  <input type="hidden" class='opt-name' value="{{this.optName}}" />
+                                    <div class='col-lg-3'>{{this.qty}}</div>
+                                    <div class='col-lg-3'>{{this.price}}</div>
                                     <div class='col-lg-4'>{{{this.optOptions}}}</div>
                                     <div class='col-lg-2 text-right'>
                                         <button class='product_opt_remove btn btn-danger btn-sm'>Remove</button>

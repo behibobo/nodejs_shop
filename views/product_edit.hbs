@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Permalink</label>
+                <label class="col-sm-2 control-label">Slug</label>
                 <div class="col-sm-10">
                     <div class="input-group">
                         <input type="text" class="form-control" name="frmProductPermalink" id="frmProductPermalink" placeholder="Permalink for the article" value={{result.productPermalink}}>
@@ -89,7 +89,6 @@
                             </li>
                         {{/each}}
                     </ul>
-                    <p class="help-block">Here you can set options for your product. Eg: Size, color, style</p>
                 </div>
             </div>
             <div class="form-group">
@@ -102,6 +101,17 @@
                         </label>
                     </div>
                     <p class="help-block">Allow free form comments when adding products to cart</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="frmProductComment" class="col-sm-2 control-label">Featured</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input class="frmProductComment" type="checkbox" {{checkedState result.productFeatured}} id="frmProductFeatured"
+                                name="frmProductFeatured">
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="form-group">

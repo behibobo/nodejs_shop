@@ -1,0 +1,26 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <form method="post" class="form-horizontal" id="insert_form" action="/admin/option/insert" data-toggle="validator">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <div class="pull-right">
+                    <button id="frm_edit_product_save" class="btn btn-success" type="submit">Add Option <i class="fa fa-plus"></i></button>
+                </div>
+                <h2>New Option</h2>
+            </div>
+            <div class="form-group">
+                <label for="frmProductTitle" class="col-sm-2 control-label">Product title *</label>
+                <div class="col-sm-10">
+                    <input type="text" id="frmProductTitle" name="frmProductTitle" class="form-control" minlength="5" maxlength="200" value="{{productTitle}}" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="frmProductTags" class="col-sm-2 control-label">Option values</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="frmProductTags" name="frmOptionValues">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <div class="col-lg-12">
+        <h2>Options</h2>
+    </div>
+    <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <td>Options</td>
+                <td>Values</td>
+            </tr>
+            {{#each top_results}}
+              <tr>
+                <td class="list-group-item">
+                  <td>
+                    <a href="/admin/option/edit/{{this._id}}">{{this.optionTitle}}</a>
+                  </td>
+                  <td>
+                    <a class="text-danger" href="/admin/option/delete/{{this._id}}" onclick="return confirm('Are you sure you want to delete this product?');">
+                       <i class="fa fa-trash-o"></i>
+                    </a>
+                  </td>
+                </td>
+              </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>

@@ -54,6 +54,7 @@ if(config.paymentGateway === 'authorizenet'){
 const index = require('./routes/index');
 const admin = require('./routes/admin');
 const product = require('./routes/product');
+const option = require('./routes/option');
 const customer = require('./routes/customer');
 const order = require('./routes/order');
 const user = require('./routes/user');
@@ -268,6 +269,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/', customer);
 app.use('/', product);
+app.use('/', option);
 app.use('/', order);
 app.use('/', user);
 app.use('/', admin);
@@ -346,6 +348,7 @@ MongoClient.connect(config.databaseConnectionString, {}, (err, client) => {
     db.pages = db.collection('pages');
     db.menu = db.collection('menu');
     db.customers = db.collection('customers');
+    db.opts = db.collection('options');
 
     // add db to app for routes
     app.dbClient = client;

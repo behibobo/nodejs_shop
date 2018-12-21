@@ -55,6 +55,8 @@ const index = require('./routes/index');
 const admin = require('./routes/admin');
 const product = require('./routes/product');
 const option = require('./routes/option');
+const brand = require('./routes/brand');
+const category = require('./routes/category');
 const customer = require('./routes/customer');
 const order = require('./routes/order');
 const user = require('./routes/user');
@@ -270,6 +272,8 @@ app.use('/', index);
 app.use('/', customer);
 app.use('/', product);
 app.use('/', option);
+app.use('/', category);
+app.use('/', brand);
 app.use('/', order);
 app.use('/', user);
 app.use('/', admin);
@@ -349,6 +353,8 @@ MongoClient.connect(config.databaseConnectionString, {}, (err, client) => {
     db.menu = db.collection('menu');
     db.customers = db.collection('customers');
     db.opts = db.collection('options');
+    db.brands = db.collection('brands');
+    db.categories = db.collection('categories');
 
     // add db to app for routes
     app.dbClient = client;

@@ -110,7 +110,7 @@ router.post('/admin/product/insert', common.restrict, common.checkAccess, (req, 
             req.session.productTags = req.body.frmProductTags;
 
             // redirect to insert
-            res.redirect('/admin/insert');
+            res.redirect('/admin/product/new');
         }else{
             db.products.insert(doc, (err, newDoc) => {
                 if(err){

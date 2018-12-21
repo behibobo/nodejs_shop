@@ -590,10 +590,62 @@ $(document).ready(function (){
         }
     });
 
+    $(document).on('click', '#validate_brand_permalink', function(e){
+        if($('#frmBrandPermalink').val() !== ''){
+            $.ajax({
+                method: 'POST',
+                url: '/admin/api/validate_brand_permalink',
+                data: {'permalink': $('#frmBrandPermalink').val(), 'docId': $('#frmBrandId').val()}
+            })
+            .done(function(msg){
+                showNotification(msg, 'success');
+            })
+            .fail(function(msg){
+                showNotification(msg.responseJSON.message, 'danger');
+            });
+        }else{
+            showNotification('Please enter a permalink to validate', 'danger');
+        }
+    });
+
+    $(document).on('click', '#validate_category_permalink', function(e){
+        if($('#frmBrandPermalink').val() !== ''){
+            $.ajax({
+                method: 'POST',
+                url: '/admin/api/validate_category_permalink',
+                data: {'permalink': $('#frmCategoryPermalink').val(), 'docId': $('#frmCategoryId').val()}
+            })
+            .done(function(msg){
+                showNotification(msg, 'success');
+            })
+            .fail(function(msg){
+                showNotification(msg.responseJSON.message, 'danger');
+            });
+        }else{
+            showNotification('Please enter a permalink to validate', 'danger');
+        }
+    });
+
     // applies an product filter
     $(document).on('click', '#btn_product_filter', function(e){
         if($('#product_filter').val() !== ''){
             window.location.href = '/admin/products/filter/' + $('#product_filter').val();
+        }else{
+            showNotification('Please enter a keyword to filter', 'danger');
+        }
+    });
+
+    $(document).on('click', '#btn_brand_filter', function(e){
+        if($('#brand_filter').val() !== ''){
+            window.location.href = '/admin/brand/filter/' + $('#brand_filter').val();
+        }else{
+            showNotification('Please enter a keyword to filter', 'danger');
+        }
+    });
+
+    $(document).on('click', '#btn_category_filter', function(e){
+        if($('#category_filter').val() !== ''){
+            window.location.href = '/admin/category/filter/' + $('#category_filter').val();
         }else{
             showNotification('Please enter a keyword to filter', 'danger');
         }

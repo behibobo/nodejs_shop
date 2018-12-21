@@ -1,6 +1,19 @@
 <div class="col-lg-3">
     <h2>Menu</h2>
     <ul class="list-group">
+      <li class="list-group-item"><strong>Brands</strong></li>
+      {{#ifCond session.isAdmin '===' true}}
+      <li class="list-group-item"><i class="fa fa-plus-square-o fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/brand/new">New</a></li>
+      {{/ifCond}}
+      <li class="list-group-item"><i class="fa fa-list fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/brands">List</a></li>
+
+      <li class="list-group-item"><strong>Categories</strong></li>
+      {{#ifCond session.isAdmin '===' true}}
+      <li class="list-group-item"><i class="fa fa-plus-square-o fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/category/new">New</a></li>
+      {{/ifCond}}
+      <li class="list-group-item"><i class="fa fa-list fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/categories">List</a></li>
+
+
         <li class="list-group-item"><strong>Products</strong></li>
         {{#ifCond session.isAdmin '===' true}}
         <li class="list-group-item"><i class="fa fa-plus-square-o fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/product/new">New</a></li>

@@ -1,0 +1,45 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <div class="col-lg-12">
+        <h2>Brands</h2>
+    </div>
+    <div class="col-lg-12 search_bar">
+        <div class="input-group">
+            <input type="text" name="brand_filter" id="brand_filter" class="form-control input-lg" placeholder="Filter brands">
+            <span class="input-group-btn">
+                <button class="btn btn-success btn-lg" id="btn_brand_filter">Filter</button>
+                <a href="/admin/brands" class="hidden-xs btn btn-warning btn-lg"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <p class="text-warning top-pad-10">Brands can be filtered by: brand title or brand description keywords</p>
+    </div>
+    {{#if results}}
+        <div class="col-lg-12">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Brands - <span class="text-danger">Filtered term: {{searchTerm}} </span></strong>
+                </li>
+                {{#each results}}
+                    <li class="list-group-item">
+                        <h4 class="pull-right text-danger" style="padding-left: 10px;"><a class="text-danger" href="/admin/brand/delete/{{this._id}}" onclick="return confirm('Are you sure you want to delete this brand?');"> <i class="fa fa-trash-o"></i></a></h4>
+                        <h5><a href="/admin/brand/edit/{{this._id}}">{{this.brandTitle}}</a></h5>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{else}}
+        <div class="col-lg-12">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Recent brands</strong>
+                </li>
+                {{#each top_results}}
+                    <li class="list-group-item">
+                        <h4 class="pull-right" style="padding-left: 10px;"><a class="text-danger" href="/admin/brand/delete/{{this._id}}" onclick="return confirm('Are you sure you want to delete this brand?');"> <i class="fa fa-trash-o"></i></a></h4>
+                        <h5><a href="/admin/brand/edit/{{this._id}}">{{this.brandTitle}}</a></h5>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+</div>

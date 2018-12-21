@@ -415,6 +415,56 @@ router.post('/admin/api/validate_permalink', (req, res) => {
     });
 });
 
+// validate the brand permalink
+router.post('/admin/api/validate_brand_permalink', (req, res) => {
+    // if doc id is provided it checks for permalink in any products other that one provided,
+    // else it just checks for any products with that permalink
+    const db = req.app.db;
+
+    let query = {};
+    if(typeof req.body.docId === 'undefined' || req.body.docId === ''){
+        query = {brandPermalink: req.body.permalink};
+    }else{
+        query = {brandPermalink: req.body.permalink, _id: {$ne: common.getId(req.body.docId)}};
+    }
+
+    db.brands.count(query, (err, brands) => {
+        if(err){
+            console.info(err.stack);
+        }
+        if(brands > 0){
+            res.status(400).json({message: 'Permalink already exists'});
+        }else{
+            res.status(200).json({message: 'Permalink validated successfully'});
+        }
+    });
+});
+
+// validate the brand permalink
+router.post('/admin/api/validate_category_permalink', (req, res) => {
+    // if doc id is provided it checks for permalink in any products other that one provided,
+    // else it just checks for any products with that permalink
+    const db = req.app.db;
+
+    let query = {};
+    if(typeof req.body.docId === 'undefined' || req.body.docId === ''){
+        query = {categoryPermalink: req.body.permalink};
+    }else{
+        query = {categoryPermalink: req.body.permalink, _id: {$ne: common.getId(req.body.docId)}};
+    }
+
+    db.categories.count(query, (err, brands) => {
+        if(err){
+            console.info(err.stack);
+        }
+        if(brands > 0){
+            res.status(400).json({message: 'Permalink already exists'});
+        }else{
+            res.status(200).json({message: 'Permalink validated successfully'});
+        }
+    });
+});
+
 // upload the file
 let upload = multer({dest: 'public/uploads/'});
 router.post('/admin/file/upload', common.restrict, common.checkAccess, upload.single('upload_file'), (req, res, next) => {
@@ -425,7 +475,7 @@ router.post('/admin/file/upload', common.restrict, common.checkAccess, upload.si
 
         // Get the mime type of the file
         const mimeType = mime.lookup(file.originalname);
-        
+
         // Check for allowed mime type and file size
         if(!common.allowedMimeType.includes(mimeType) || file.size > common.fileSizeLimit){
             // Remove temp file

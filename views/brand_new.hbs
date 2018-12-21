@@ -1,0 +1,42 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <form method="post" class="form-horizontal" id="insert_form" action="/admin/brand/insert" data-toggle="validator">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <div class="pull-right">
+                    <button id="frm_edit_product_save" class="btn btn-success" type="submit">Add brand <i class="fa fa-plus"></i></button>
+                </div>
+                <h2>New Brand</h2>
+            </div>
+            <div class="form-group">
+                <label for="frmBrandTitle" class="col-sm-2 control-label">Brand title *</label>
+                <div class="col-sm-10">
+                    <input type="text" id="frmBrandTitle" name="frmBrandTitle" class="form-control" maxlength="200" value="{{brandTitle}}" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Slug</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="frmBrandPermalink" id="frmBrandPermalink" placeholder="Permalink for the article" value={{brandPermalink}}>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" id="validate_brand_permalink" type="button">Validate</button>
+                        </span>
+                    </div>
+                    <p class="help-block">This sets a readable URL for the product</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+<script>
+    $(document).ready(function() {
+        $('#editor').summernote({
+            height: 300,
+            minHeight: null
+        });
+    });
+</script>

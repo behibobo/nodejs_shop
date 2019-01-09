@@ -1,0 +1,70 @@
+﻿.indicator {
+            background-color: #e6e6e6;
+            /*background-image: url("../md-pro/assets/Img/indicator.gif");*/
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 99999999;
+            opacity: 0.8;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+            filter: alpha(opacity=80);
+            z-index: 10;
+        }
+
+        .load {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+            /*change these sizes to fit into your project*/
+            width: 70px;
+            height: 70px;
+        }
+
+            .load hr {
+                border: 0;
+                margin: 0;
+                width: 40%;
+                height: 40%;
+                position: absolute;
+                border-radius: 50%;
+                animation: spin 2s ease infinite;
+            }
+
+            .load :first-child {
+                background: #19A68C;
+                animation-delay: -1.5s;
+            }
+
+            .load :nth-child(2) {
+                background: #F63D3A;
+                animation-delay: -1s;
+            }
+
+            .load :nth-child(3) {
+                background: #FDA543;
+                animation-delay: -0.5s;
+            }
+
+            .load :last-child {
+                background: #193B48;
+            }
+
+        @keyframes spin {
+            0%,100% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(160%);
+            }
+
+            50% {
+                transform: translate(160%, 160%);
+            }
+
+            75% {
+                transform: translate(0, 160%);
+            }
+        }

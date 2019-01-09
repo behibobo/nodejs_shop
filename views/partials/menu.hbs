@@ -1,4 +1,4 @@
-<div class="col-lg-3">
+<!-- <div class="col-lg-3">
     <h2>Menu</h2>
     <ul class="list-group">
       <li class="list-group-item"><strong>Brands</strong></li>
@@ -34,4 +34,152 @@
         <li class="list-group-item"><i class="fa fa-bars fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/settings/menu">Menu</a></li>
         <li class="list-group-item"><i class="fa fa-file-o fa-icon" aria-hidden="true"></i> &nbsp; <a href="/admin/settings/pages">Static pages</a></li>
     </ul>
+</div> -->
+
+<div class="sidebar" data-active-color="orange" data-background-color="black" data-image="/admin/images/sidebar-2.jpg">
+    <div class="logo">
+        <a href="/" target="_blank" id="body_preview" class="simple-text logo-mini">
+            <i class="mdi mdi-bullseye"></i>
+        </a>
+        <a href="/" target="_blank" id="body_preview_in_iframe" class="simple-text logo-normal">مشاهده سایت</a>
+    </div>
+    <div class="sidebar-wrapper" id="style-6">
+{{#if admin}}
+        <div class="user">
+            <div class="photo">
+                <img src="/admin/images/default-avatar.png" />
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                        user name
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <div class="clearfix"></div>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-mini"><i class="mdi mdi-account-edit"> </i></span>
+                                <span class="sidebar-normal">ویرایش مشخصات کاربری</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/logout">
+                                <span class="sidebar-mini"><i class="mdi mdi-logout"> </i></span>
+                                <span class="sidebar-normal">خروج</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      {{/if}}
+
+        <ul class="nav">
+            <li class='nav-item @(currentController == "dashboard" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/dashboard">
+                    <i class="mdi mdi-view-dashboard"> </i><p>دشبورد</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "products" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/products">
+                    <i class="mdi mdi-arrange-send-to-back"> </i><p>محصولات</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "brands" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/brands">
+                    <i class="mdi mdi-webpack"> </i><p>برندها</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "categories" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/categories">
+                    <i class="mdi mdi-notification-clear-all"> </i><p>دسته بندی ها</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "specs" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="specs" asp-action="Index">
+                    <i class="mdi mdi-information-outline"> </i><p>مشخصات فنی</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "options" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="options" asp-action="Index">
+                    <i class="mdi mdi-filter-outline"> </i><p>فیلتر ها</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "tags" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="tags" asp-action="Index">
+                    <i class="mdi mdi-tag-multiple"> </i><p>تگ ها</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "articles" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="articles" asp-action="Index">
+                    <i class="mdi mdi-newspaper"> </i><p>مقالات</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "pages" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="pages" asp-action="Index">
+                    <i class="mdi mdi-note-multiple-outline"> </i><p>صفحات</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "sliders" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="sliders" asp-action="Index">
+                    <i class="mdi mdi-camera-burst"> </i><p>اسلایدر</p>
+                </a>
+            </li>
+
+            <li class="nav-item @(currentController == "users" || currentController == "roles" ? "active" : "")">
+                <a class="nav-link @(currentController == "users" || currentController == "roles" ? "" : "collapsed")" data-toggle="collapse" href="#users" aria-expanded="@(currentController == "users" || currentController == "roles" ? "true" : "false")">
+                    <i class="mdi mdi-account-multiple"> </i>
+                    <p>
+                        مدیریت کاربران
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class=" @(currentController == "users" || currentController == "roles" ? "collapse in" : "collapse")"
+                      aria-expanded="@(currentController == "users" || currentController == "roles" ? "true" : "false")"
+                     id="users">
+                    <ul class="nav">
+                        <li class='nav-item @(currentController == "users" ? "active" : "")'>
+                            <a class="nav-link mybtn" asp-controller="users" asp-action="Index">
+                                <i class="mdi mdi-account-multiple"> </i><p>کاربران</p>
+                            </a>
+                        </li>
+                        <li class='nav-item @(currentController == "roles" ? "active" : "")'>
+                            <a class="nav-link mybtn" asp-controller="roles" asp-action="Index">
+                                <i class="mdi mdi-account-multiple"> </i><p>نقش های کاربری</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class='nav-item @(currentController == "orders" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/orders">
+                    <i class="mdi mdi-cart-outline"> </i><p>سفارشات</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "comments" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="comments" asp-action="Index">
+                    <i class="mdi mdi-comment-account-outline"> </i><p>نظرات کاربران</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "settings" ? "active" : "")'>
+                <a class="nav-link mybtn" href="/admin/settings">
+                    <i class="mdi mdi-settings-outline"> </i><p>تنظیمات</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "stats" ? "active" : "")'>
+                <a class="nav-link mybtn" asp-controller="stats" asp-action="Index">
+                    <i class="mdi mdi-chart-bar"> </i><p>آمار بازدیدکنندگان</p>
+                </a>
+            </li>
+            <li class='nav-item @(currentController == "backups" ? "active" : "")'>
+                <a class="nav-link mybtn" href="<%= admin_dashboard_backup_history_path %>">
+                    <i class="mdi mdi-backup-restore"> </i><p>پشتیبان گیری</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
